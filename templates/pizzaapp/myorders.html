@@ -1,0 +1,25 @@
+{% extends 'pizzaapp/base.html' %}
+{% block content %}
+<h1 style="text-align: center;color: black;">My Orders</h1>
+<div class="alert alert-warning" role = "alert">
+<table class="container">
+	<tr>
+		<th>UserName</th>
+		<th>Phone NO</th>
+		<th>address</th>
+		<th>Ordered items</th>
+		<th>Status</th>
+	</tr>
+	{% for order in orders %}
+	<tr>
+		<td> {{ order.username }} </td>
+		<td> {{ order.phoneno }} </td>
+		<td> {{ order.address }}</td>
+		<td>{{ order.ordereditems }}</td>
+		<td>{{ order.status}}</td>
+	</tr>
+	{% endfor %}
+
+</table>
+</div>
+{% endblock %}

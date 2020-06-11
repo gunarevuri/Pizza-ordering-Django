@@ -1,0 +1,31 @@
+{% extends 'pizzaapp/base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Welcome</a>
+<!--   <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form> -->
+  <a href="/loginuser/" class="btn btn-danger">Login</a>
+</nav>
+{% for message in messages %}
+<p style="text-align: center;">{{ message }}</p>
+{% endfor %}
+<div class="container-fluid" style="position: relative;" >
+	<div style="width: 500px;margin-top: 20px; position: absolute;right: 20px;  height: 400px; background-color: orange;" class="container" >
+		<h2 style="text-align: center; margin-top: 20px; color: white;">Sign UP!</h2>
+		<form action="{% url 'signupuser' %}" method="post">
+			{% csrf_token %}
+			User Name:<input style="margin-top: 10px;" type="text" class="form-control" name="username" placeholder="username"><br>
+			Password: <input style="margin-top: 10px;" class="form-control" type="password" name="password" placeholder="password"><br>
+			Phone No:<input style="margin-top: 10px;" class="form-control" type="number" name="phoneno" placeholder="phone number"><br>
+			<input style="margin-top: 10px; display: block;margin: auto;" type="submit" name="" value="Sign Up" class="btn btn-success">
+		</form>
+		
+	</div>
+	
+</div>
+
+
+{% endblock %}

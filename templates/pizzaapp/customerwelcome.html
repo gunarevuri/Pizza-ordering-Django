@@ -1,0 +1,44 @@
+{% extends 'pizzaapp/base.html' %}
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Welcome {{username}} {{phoneno}}</a>
+  <a href="/myorders/" class="nav-item">My Orders</a>
+<!--   <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form> -->
+<a href="/userlogout/" class="btn btn-danger">Logout</a>
+</nav>
+{% for message in messages %}
+<p style="color: green; text-align: center;">{{ message}}</p>
+{% endfor %}
+
+
+<form action="/placeorder/" method="post">
+	{% csrf_token %}
+<div class="container" style=" display: block;margin: auto; margin-top: 80px;">
+<table style="width: 600px;" class="container">
+	<tr>
+		<th>Pizza</th>
+		<th>Price</th>
+		<th>Quantity</th>
+	</tr>
+	{% for pizza in pizzas %}
+	<tr>
+		<td>{{pizza.name}}</td>
+		<td>{{pizza.price}}</td>
+		<td><input type="number" min="0" value="0" style="width: 60px;" name="{{pizza.id}}"></td>
+
+	</tr>
+	{% endfor %}
+
+</table>
+</div>
+<div class="container" style="      margin: auto;  margin-top: 76px;padding-left: 300px;">
+	<input style="width: 400px" type="text" placeholder="address" name="address" >
+	<input type="number" name="phoneno" placeholder="Mobile No">
+	<input type="submit" name="place order" value="Place Order" class="btn btn-outline-success">
+</div>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'pizzaapp/base.html' %}
+{% block content %}
+<h2 style="text-align: center;">Login</h2>
+
+<div class="container" style="width: 400px;">
+<form action="/userauthenticate/" method="post">
+	{% csrf_token %}
+	<input class = " form-control"  type="text" name="username" placeholder="username">
+	<input class="form-control" type="password" name="password" placeholder="password">
+	<input type="submit" value="Login" name="Login" class="btn btn-success">
+</form>
+</div>
+
+{% for message in messages %}
+<p> {{ message }}</p>
+{% endfor %}
+
+{% endblock %}
